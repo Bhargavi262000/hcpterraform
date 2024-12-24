@@ -14,7 +14,7 @@ resource "google_container_node_pool" "good_node_pool" {
   name               = "good-node-pool"
   cluster            = "cluster-1"
   project = "hcp-tf-test-bhargavi"
-  location           = "US"
+  location           = "EU"
   initial_node_count = 3
 
   node_config {
