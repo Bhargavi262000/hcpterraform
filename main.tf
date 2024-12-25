@@ -9,26 +9,3 @@ resource "google_storage_bucket" "test_bucket_good" {
   storage_class               = "STANDARD"
   uniform_bucket_level_access = true
 }
-
-resource "google_securityposture_posture" "posture_2" {
-  posture_id  = "posture_2"
-  parent      = "organizations/714470867684"
-  location    = "global"
-  state       = "ACTIVE"
-  description = "a new posture"
-  policy_sets {
-      policy_set_id = "org_policy_set"
-      description   = "set of org policies"
-      policies {
-          policy_id = "policy_1"
-          constraint {
-              org_policy_constraint {
-                  canned_constraint_id = "storage.uniformBucketLevelAccess"
-                  policy_rules {
-                      enforce = false
-                  }
-              }
-          }
-      }
-  }
-}
