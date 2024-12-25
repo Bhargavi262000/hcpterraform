@@ -3,25 +3,38 @@ provider "google" {
   region  = "us-central1"
 }
 
-resource "google_securityposture_posture" "posture_2" {
-  posture_id  = "posture_2"
-  parent      = "organizations/714470867684"
-  location    = "global"
-  state       = "ACTIVE"
-  description = "a new posture"
-  policy_sets {
-      policy_set_id = "org_policy_set"
-      description   = "set of org policies"
-      policies {
-          policy_id = "policy_1"
-          constraint {
-              org_policy_constraint {
-                  canned_constraint_id = "storage.uniformBucketLevelAccess"
-                  policy_rules {
-                      enforce = false
-                  }
-              }
-          }
-      }
-  }
+module "gcp_org_policy_v2" {
+ source           = "terraform-google-modules/org-policy/google//modules/org_policy_v2"
+
+ policy_root      = "organization"
+ policy_root_id   = "1000043173737"
+ constraint       = "iam.disableServiceAccountKeyUpload"
+ policy_type      = "boolean"
+ exclude_folders  = []
+ exclude_projects = []
+
+
+ rules = [
+   # Rule 1
+   {
+    // Modification(enforcement - false ->true).
+     enforcement = true
+     allow       = []
+     deny        = []
+     conditions  = []
+   },
+ ]
+}
+
+
+resource "google_org_policy_policy" "primary" {
+ name   = "projects/461255015551/policies/compute.requireOsLogin"
+ parent = "projects/461255015551"
+
+
+ spec {
+   rules {
+     enforce = "FALSE"
+   }
+ }
 }
