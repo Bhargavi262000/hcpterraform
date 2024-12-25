@@ -25,7 +25,7 @@ resource "google_securityposture_posture" "posture_2" {
               org_policy_constraint {
                   canned_constraint_id = "storage.uniformBucketLevelAccess"
                   policy_rules {
-                      enforce = true
+                      enforce = false
                   }
               }
           }
