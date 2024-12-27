@@ -26,7 +26,7 @@ resource "google_securityposture_posture" "posture_2" {
   }
 }
 
-resource "google_compute_network" "network1"{
+resource "google_compute_network" "networasxk1"{
   name                                        = "network-vpc1"
   delete_default_routes_on_create = false
   auto_create_subnetworks           = false
@@ -35,7 +35,7 @@ resource "google_compute_network" "network1"{
   project = "hcp-tf-test-bhargavi"
 }
 
-resource "google_compute_network" "network2"{
+resource "google_compute_network" "networascdk2"{
   name                                        = "network-vpc2"
   delete_default_routes_on_create = false
   auto_create_subnetworks           = false
