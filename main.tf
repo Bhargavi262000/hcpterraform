@@ -8,6 +8,6 @@ resource "google_compute_network" "network1"{
   delete_default_routes_on_create = false
   auto_create_subnetworks           = false
   routing_mode                      = "REGIONAL"
-  mtu = 100
+  mtu = 1301
   project = "hcp-tf-test-bhargavi"
 }
