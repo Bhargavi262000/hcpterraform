@@ -5,6 +5,6 @@ provider "google" {
 
 resource "google_folder" "folder" {
   display_name = "policy"
-  parent       = "organizations/1000043173737"
+  parent       = "organizations/714470867684"
 }
 
