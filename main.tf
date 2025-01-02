@@ -5,7 +5,7 @@ provider "google" {
 // Resource already exists.
 resource "google_securityposture_posture_deployment" "postureDeployment2" {
   posture_deployment_id = "posture_deployment_2"
-  parent                = "organizations/1000043173737"
+  parent                = "organizations/10000431737"
   location              = "global"
   //Modification(description - a new posture deployment -> a new posture deployment - posture_1).
   description           = "a new posture deployment - posture_1"
