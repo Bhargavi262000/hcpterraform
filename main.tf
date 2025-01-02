@@ -2,16 +2,18 @@ provider "google" {
   project = "hcp-tf-test-bhargavi"
   region  = "us-central1"
 }
-// Resource already exists.
-resource "google_securityposture_posture_deployment" "postureDeployment2" {
-  posture_deployment_id = "posture_deployment_2"
-  parent                = "organizations/10000431737"
-  location              = "global"
-  //Modification(description - a new posture deployment -> a new posture deployment - posture_1).
-  description           = "a new posture deployment - posture_1"
-  target_resource       = "projects/55476130589"
-  posture_id            = google_securityposture_posture.posture_2.name
-  posture_revision_id   = google_securityposture_posture.posture_2.revision_id
+
+
+resource "google_container_node_pool" "primary_node_pool" {
+  name       = "primary-node-pool-1"
+  cluster    = "cluster-1"
+  project = "iactestproject-411006"
+  initial_node_count = 2
+
+  node_config {
+    preemptible  = true
+    machine_type = "e2-medium"
+  }
 }
 
 resource "google_storage_bucket" "test_bucket_good" {
