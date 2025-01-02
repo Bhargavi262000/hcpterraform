@@ -14,28 +14,12 @@ resource "google_securityposture_posture_deployment" "postureDeployment2" {
   posture_revision_id   = google_securityposture_posture.posture_2.revision_id
 }
 
-// Resource already exists.
-module "gcp_org_policy_v2" {
- source           = "terraform-google-modules/org-policy/google//modules/org_policy_v2"
-
- policy_root      = "organization"
- policy_root_id   = "1000043173737"
- constraint       = "iam.disableServiceAccountKeyUpload"
- policy_type      = "boolean"
- exclude_folders  = []
- exclude_projects = []
-
-
- rules = [
-   # Rule 1
-   {
-    // Modification(enforcement - false ->true).
-     enforcement = true
-     allow       = []
-     deny        = []
-     conditions  = []
-   },
- ]
+resource "google_storage_bucket" "test_bucket_good" {
+  name                        = "test-bucket-good"
+  location                    = "US"
+  storage_class               = "STANDARD"
+  project                     = google_project.grandchild_of_scenario_10_bill.project_id
+  uniform_bucket_level_access = true
 }
 
 
