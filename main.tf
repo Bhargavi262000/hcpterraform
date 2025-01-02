@@ -7,7 +7,7 @@ provider "google" {
 resource "google_container_node_pool" "primary_node_pool" {
   name       = "primary-node-pool-1"
   cluster    = "cluster-1"
-  project = "iactestproject-411006"
+  project    = "hcp-tf-test-bhar"
   initial_node_count = 2
 
   node_config {
