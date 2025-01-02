@@ -18,7 +18,7 @@ resource "google_storage_bucket" "test_bucket_good" {
   name                        = "test-bucket-good"
   location                    = "US"
   storage_class               = "STANDARD"
-  project                     = google_project.grandchild_of_scenario_10_bill.project_id
+  project                     = "hcp-tf-test-bhargavi"
   uniform_bucket_level_access = true
 }
 
